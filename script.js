@@ -43,7 +43,7 @@ for(let i = 0; i < data.length; i++){
 let cart = []
 
 function addItem(name, price){
-    item = {name: name, price: price, qty: 1}
+    let item = {name: name, value: price, qty: 1}
     cart.push(item)
 }
 
