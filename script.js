@@ -11,7 +11,9 @@ for(let i = 0; i < data.length; i++){
     const price = document.createElement('P')
     const button = document.createElement('button')
 
+    //creates button element
     button.id = data[i].name
+    button.dataset.price = data[i].price
 
     //create an image element
     img.src = data[i].image
@@ -21,6 +23,7 @@ for(let i = 0; i < data.length; i++){
     //add text
     description.innerText = data[i].desc
     price.innerText = data[i].price
+    button.innerHTML = "Add to Cart"
 
     //add to div
     newDiv.appendChild(img)
@@ -31,6 +34,8 @@ for(let i = 0; i < data.length; i++){
 
     newDiv.appendChild(price)
     console.log(price)
+
+    newDiv.appendChild(button)
 
     itemContainer.appendChild(newDiv)
 }

@@ -50,5 +50,16 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
+    justify-content: space-between;
+
+    border-style: solid;
+    border-color: black;
+    padding: 10px;
+
+}
+
+button {
+    margin-left: 35px;
+    margin-right: 35px ;
 }
 
