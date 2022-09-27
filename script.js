@@ -39,3 +39,19 @@ for(let i = 0; i < data.length; i++){
 
     itemContainer.appendChild(newDiv)
 }
+
+let cart = []
+
+function addItem(name, price){
+    item = {name: name, price: price, qty: 1}
+    cart.push(item)
+}
+
+function showItems(){
+    console.log(cart)
+}
+
+addItem("poop", 1.99)
+addItem("lava cookie", 10.99)
+
+showItems()
