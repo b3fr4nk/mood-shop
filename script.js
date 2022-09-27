@@ -43,7 +43,7 @@ for(let i = 0; i < data.length; i++){
 let cart = []
 
 function addItem(name, price){
-    let item = {name: name, value: price, qty: 1}
+    const item = {name: name, price: price, qty: 1}
     cart.push(item)
 }
 
@@ -51,7 +51,12 @@ function showItems(){
     console.log(cart)
 }
 
-addItem("poop", 1.99)
-addItem("lava cookie", 10.99)
+function getTotalPrice(){
+    let total = 0
+    for(let i = 0; i < cart.length; i++){
+        total += cart[i].price
+    }
+    return total
+}
 
 showItems()
