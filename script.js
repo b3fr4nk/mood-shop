@@ -53,10 +53,18 @@ function showItems() {
         const name = cart[i].name
         const price = cart[i].price
         const qty = cart[i].qty
+        
+        //add and remove buttons
+        const button = `<button class='remove' data-name=${name}>Remove</button>`
+        const addButton = `<button class='add-one' data-name=${name}>+</button>`
+        const removeButton = `<button class='remove-one' data-name=${name}>-</button>`
+
+        //text input for number of items
+        const textField = `<input type="text"></input>`
 
         //create the new li and add the content
         const itemElem = document.createElement("li")
-        itemElem.innerHTML = `<p>${name}: ${price} X${qty}</p>`
+        itemElem.innerHTML = `<p>${name}: ${price} X${qty} ${button} ${addButton} ${removeButton} ${textField}</p>`
 
         //append new li to the list
         itemList.appendChild(itemElem)
@@ -103,8 +111,17 @@ function getTotalPrice(){
     return total
 }
 
-function removeItem(index=cart.length-1){
+function removeItem(name){
+    const index = contains(items, name)
     cart.splice(index, 1)
+}
+
+function subtractItem(name){
+    const index = contains(items, name)
+
+    if(cart[index].qty > 1){
+        cart[index].qty -= 1
+    }   
 }
 
 function removeAll(){
@@ -115,3 +132,26 @@ all_items_button.forEach(elt => elt.addEventListener('click', () => {
     addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
     showItems()
 }))
+
+//handle clicks on list
+itemList.onclick = function(e) {
+    if(e.target && e.target.classList.contains('remove')){
+        const name = e.target.dataset.name
+        removeItem(name)
+    }
+
+    if(e.target && e.target.classList.contains('add-one')){
+        const name = e.target.dataset.name
+        addItem(name)
+    }
+
+    if (e.target && e.target.classList.contains('remove-one')) {
+        const name = e.target.dataset.name
+        subtractItem(name)
+    }
+
+    showItems()
+
+}
+
+showItems()
